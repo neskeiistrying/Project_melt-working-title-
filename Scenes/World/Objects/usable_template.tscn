@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dq7arfcphgvtu"]
+
+[ext_resource type="Texture2D" uid="uid://c5151oxtkg8fr" path="res://Assets/kenney_prototype-textures/PNG/Red/texture_05.png" id="1_35pjy"]
+[ext_resource type="Script" uid="uid://curqkj53k21lq" path="res://Scripts/Interaction_handling/item_classes/usable.gd" id="1_k6jlx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k6jlx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jikpx"]
+albedo_texture = ExtResource("1_35pjy")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a56au"]
+
+[node name="Usable_template" type="StaticBody3D" unique_id=280956979]
+collision_layer = 15
+collision_mask = 4
+script = ExtResource("1_k6jlx")
+prompt_l1 = "LMB: collect"
+prompt_l2 = "E to use"
+collectable = true
+interaction_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=513401255]
+mesh = SubResource("BoxMesh_k6jlx")
+surface_material_override/0 = SubResource("StandardMaterial3D_jikpx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=351368680]
+shape = SubResource("BoxShape3D_a56au")
+
+[connection signal="collected" from="." to="." method="_on_collected"]
+[connection signal="inspect" from="." to="." method="_on_inspect"]
+[connection signal="used" from="." to="." method="_on_used"]

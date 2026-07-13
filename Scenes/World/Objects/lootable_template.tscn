@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://884ivnurirwl"]
+
+[ext_resource type="Script" uid="uid://cb22u0jw4aqy" path="res://Scripts/Interaction_handling/item_classes/lootable.gd" id="1_xlpfg"]
+[ext_resource type="Material" uid="uid://bygk670ho6fg7" path="res://Assets/resources/standard_textures/temp_green.tres" id="3_01old"]
+[ext_resource type="Material" uid="uid://cj0bwyqhwajce" path="res://Assets/resources/standard_textures/temp_red.tres" id="3_tr2li"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rultv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2lpdi"]
+
+[node name="lootable_template" type="RigidBody3D" unique_id=395027759]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_xlpfg")
+interaction_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=244367627]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_rultv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1350174756]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_2lpdi")
+surface_material_override/0 = ExtResource("3_tr2li")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=630316140]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_2lpdi")
+surface_material_override/0 = ExtResource("3_01old")
+
+[connection signal="collected" from="." to="." method="_on_collected"]
+[connection signal="dropped" from="." to="." method="_on_dropped"]
+[connection signal="holding" from="." to="." method="_on_holding"]
+[connection signal="inspect" from="." to="." method="_on_inspect"]
+[connection signal="picked_up" from="." to="." method="_on_picked_up"]
+[connection signal="threw" from="." to="." method="_on_threw"]
+[connection signal="used" from="." to="." method="_on_used"]

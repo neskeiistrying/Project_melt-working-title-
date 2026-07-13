@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b6uy71v4lhs4p"]
+
+[ext_resource type="Script" uid="uid://478532enh8la" path="res://Scripts/Interaction_handling/item_classes/pushable.gd" id="1_oa7b2"]
+[ext_resource type="Texture2D" uid="uid://be6usj37fq7xt" path="res://Assets/kenney_prototype-textures/PNG/Orange/texture_10.png" id="1_uwxhf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oa7b2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h24f"]
+albedo_texture = ExtResource("1_uwxhf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_luk5r"]
+
+[node name="Pushable_template" type="RigidBody3D" unique_id=493475011]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_oa7b2")
+prompt_l1 = "E to interact"
+prompt_l2 = "cant collect or pick up"
+interaction_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=501414558]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_oa7b2")
+surface_material_override/0 = SubResource("StandardMaterial3D_6h24f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1475126892]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_luk5r")
+
+[connection signal="collected" from="." to="." method="_on_collected"]
+[connection signal="dropped" from="." to="." method="_on_dropped"]
+[connection signal="holding" from="." to="." method="_on_holding"]
+[connection signal="inspect" from="." to="." method="_on_inspect"]
+[connection signal="picked_up" from="." to="." method="_on_picked_up"]
+[connection signal="threw" from="." to="." method="_on_threw"]
+[connection signal="used" from="." to="." method="_on_used"]
