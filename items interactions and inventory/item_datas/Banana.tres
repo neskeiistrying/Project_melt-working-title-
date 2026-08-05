@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item_Data" format=3 uid="uid://cah44t1v7bh55"]
+
+[ext_resource type="Script" uid="uid://c5klt14wsjl4" path="res://items interactions and inventory/scripts/data/item_data.gd" id="1_yjfwo"]
+[ext_resource type="Texture2D" uid="uid://dcgofxd8d7cw1" path="res://Assets/kenny_placeholders/kenny_food_debug/icon/banana.png" id="2_rghqd"]
+
+[resource]
+script = ExtResource("1_yjfwo")
+name = "Banana"
+item_id = "banana"
+description = "yum!"
+stackable = true
+texture = ExtResource("2_rghqd")
+metadata/_custom_type_script = "uid://c5klt14wsjl4"

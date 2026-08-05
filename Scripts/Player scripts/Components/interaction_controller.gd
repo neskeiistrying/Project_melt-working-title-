@@ -56,11 +56,12 @@ func collision():
 func interaction():
 	if collider:
 		if interaction_enabled:
-			item_collection()
-			item_inspect()
-			item_pickup()
-			item_throw()
-			item_use()
+			if ! GlobalVars.inventory_toggled:
+				item_collection()
+				item_inspect()
+				item_pickup()
+				item_throw()
+				item_use()
 
 ###################################
 

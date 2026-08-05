@@ -15,6 +15,10 @@ run/main_scene="uid://bneqov0rg7tca"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/Icons and shit/icon.svg"
 
+[autoload]
+
+GlobalVars="*uid://cj5qs4i7apb8i"
+
 [display]
 
 window/size/viewport_width=1920
@@ -25,6 +29,7 @@ window/size/viewport_height=1080
 player=""
 hand=""
 target=""
+external_inventories=""
 
 [input]
 

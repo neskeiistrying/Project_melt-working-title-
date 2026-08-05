@@ -7,6 +7,8 @@ class_name Camera_Controller
 @export var cam_tilt_pivot: Node3D
 @export var camera: Camera3D
 
+var inventory_interface: Control
+
 ###################################
 
 
@@ -27,6 +29,7 @@ var head_rot: Vector3
 ###################################
 
 func _unhandled_input(event: InputEvent) -> void:
+
 	capture_mouse = Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion
 	if capture_mouse:
 		mouse_input.x = -event.screen_relative.x * sensitivity
@@ -63,8 +66,3 @@ func _physics_process(delta: float) -> void:
 
 	cam_tilt_pivot.transform.basis = Basis.from_euler(lerp(Vector3.ZERO, head_rot, 45 * delta))
 	player.transform.basis = Basis.from_euler(lerp(Vector3.ZERO, player_rot, 45 * delta))
-
-	if Engine.time_scale == 0:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

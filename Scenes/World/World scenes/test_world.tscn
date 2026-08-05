@@ -1,13 +1,27 @@
 [gd_scene format=3 uid="uid://bneqov0rg7tca"]
 
-[ext_resource type="Texture2D" uid="uid://c2ksfqjt8d5bm" path="res://Assets/kenney_prototype-textures/PNG/Dark/texture_04.png" id="1_h10xs"]
+[ext_resource type="Texture2D" uid="uid://c2ksfqjt8d5bm" path="res://Assets/kenny_placeholders/kenney_prototype-textures/PNG/Dark/texture_04.png" id="1_h10xs"]
+[ext_resource type="Script" uid="uid://c8lvipbq2lpdj" path="res://Scripts/test_world.gd" id="1_swc8g"]
 [ext_resource type="PackedScene" uid="uid://ci1dashbde43h" path="res://Scenes/Player/Player scenes/player_1.0.tscn" id="2_n4amo"]
 [ext_resource type="Material" uid="uid://xnmsobt7wdfc" path="res://Assets/resources/standard_textures/glass.tres" id="3_bv1jb"]
-[ext_resource type="PackedScene" uid="uid://884ivnurirwl" path="res://Scenes/World/Objects/lootable_template.tscn" id="4_bv1jb"]
-[ext_resource type="PackedScene" uid="uid://c2fr7bmnn8qnn" path="res://Scenes/World/Objects/pickable_template.tscn" id="4_xio2u"]
-[ext_resource type="PackedScene" uid="uid://b6uy71v4lhs4p" path="res://Scenes/World/Objects/pushable_template.tscn" id="5_wj406"]
-[ext_resource type="PackedScene" uid="uid://dq7arfcphgvtu" path="res://Scenes/World/Objects/usable_template.tscn" id="6_0uk2q"]
-[ext_resource type="PackedScene" uid="uid://qym1x14l5s8d" path="res://Scenes/World/Objects/inspectable_template.tscn" id="7_6wxs2"]
+[ext_resource type="Script" uid="uid://50qni3ju1fkm" path="res://items interactions and inventory/scripts/data/inventory_data.gd" id="6_b8au4"]
+[ext_resource type="Script" uid="uid://bnkp886jvidyt" path="res://items interactions and inventory/scripts/data/slot_data.gd" id="7_nefvi"]
+[ext_resource type="PackedScene" uid="uid://8fk5q252us21" path="res://items interactions and inventory/scenes/lootable_items/lootable_s_bottle.tscn" id="8_48t5t"]
+[ext_resource type="Resource" uid="uid://bhjpk1iybfhgw" path="res://items interactions and inventory/item_datas/Burger.tres" id="8_apoeb"]
+[ext_resource type="PackedScene" uid="uid://d2y7g0nse2h6o" path="res://items interactions and inventory/scenes/lootable_items/lootable_l_bottle.tscn" id="8_kwb38"]
+[ext_resource type="PackedScene" uid="uid://ber5ny1b8np7i" path="res://items interactions and inventory/scenes/usable_items/usable_chest.tscn" id="8_lrs6r"]
+[ext_resource type="PackedScene" uid="uid://butuqjj8psd2q" path="res://items interactions and inventory/scenes/pushable_items/pushable_workbench.tscn" id="8_rnrp6"]
+[ext_resource type="PackedScene" uid="uid://cqj3qdmijdy4s" path="res://items interactions and inventory/scenes/usable_items/inspectable_signpost.tscn" id="8_swc8g"]
+[ext_resource type="PackedScene" uid="uid://bu2a3tdm5gdna" path="res://items interactions and inventory/scenes/pickable_items/hammer.tscn" id="8_y8po0"]
+[ext_resource type="Resource" uid="uid://d1xnye2se3352" path="res://items interactions and inventory/item_datas/Apple.tres" id="9_k88k8"]
+[ext_resource type="PackedScene" uid="uid://be0q082q2raxi" path="res://items interactions and inventory/scenes/lootable_items/lootable_apple.tscn" id="9_rnrp6"]
+[ext_resource type="PackedScene" uid="uid://ck5i6ran7uqye" path="res://items interactions and inventory/scenes/lootable_items/lootable_banana.tscn" id="10_lrs6r"]
+[ext_resource type="PackedScene" uid="uid://capor1xdafw18" path="res://items interactions and inventory/scenes/lootable_items/lootable_burger.tscn" id="11_swc8g"]
+[ext_resource type="PackedScene" uid="uid://dfkfvbe7bw4ak" path="res://items interactions and inventory/Inventory/inventory.tscn" id="13_lrs6r"]
+[ext_resource type="Script" uid="uid://dpfqsqrkfdwrc" path="res://items interactions and inventory/Inventory/inventory_interface.gd" id="14_13g18"]
+[ext_resource type="PackedScene" uid="uid://xbrgf2tldsdv" path="res://items interactions and inventory/Inventory/slot.tscn" id="16_ftsh0"]
+[ext_resource type="Script" uid="uid://ruhtdfsjylej" path="res://Scripts/world_item_dictionary.gd" id="21_b8au4"]
+[ext_resource type="Script" uid="uid://cj5qs4i7apb8i" path="res://Scripts/global_vars.gd" id="22_nefvi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18ja4"]
 albedo_texture = ExtResource("1_h10xs")
@@ -26,7 +40,24 @@ sky = SubResource("Sky_fqlg8")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="Resource" id="Resource_0o1lu"]
+script = ExtResource("7_nefvi")
+item_data = ExtResource("8_apoeb")
+metadata/_custom_type_script = "uid://bnkp886jvidyt"
+
+[sub_resource type="Resource" id="Resource_oq124"]
+script = ExtResource("7_nefvi")
+item_data = ExtResource("9_k88k8")
+quantity = 12
+metadata/_custom_type_script = "uid://bnkp886jvidyt"
+
+[sub_resource type="Resource" id="Resource_bnyil"]
+script = ExtResource("6_b8au4")
+slot_datas = Array[ExtResource("7_nefvi")]([SubResource("Resource_0o1lu"), SubResource("Resource_oq124"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://50qni3ju1fkm"
+
 [node name="World" type="Node3D" unique_id=970536923]
+script = ExtResource("1_swc8g")
 
 [node name="Environment" type="Node3D" parent="." unique_id=1294265902]
 metadata/_edit_lock_ = true
@@ -59,22 +90,86 @@ collision_mask = 5
 size = Vector3(10, 5.5976563, 0.25)
 material = ExtResource("3_bv1jb")
 
-[node name="lootable_template" parent="test" unique_id=395027759 instance=ExtResource("4_bv1jb")]
+[node name="Pushable_workbench" parent="test" unique_id=493475011 instance=ExtResource("8_rnrp6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.333169, -3.037408, 3.6138332)
 
-[node name="lootable_template2" parent="test" unique_id=843012869 instance=ExtResource("4_bv1jb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.424509)
+[node name="Usable_chest" parent="test" unique_id=280956979 instance=ExtResource("8_lrs6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8524096, -3.2360706, 0.9514828)
+inventory_data = SubResource("Resource_bnyil")
 
-[node name="Pickable_template" parent="test" unique_id=2116905250 instance=ExtResource("4_xio2u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4347787, 0, 0)
+[node name="Inspectable_signpost" parent="test" unique_id=965201474 instance=ExtResource("8_swc8g")]
+transform = Transform3D(0.48779875, 0, -0.8729561, 0, 1, 0, 0.8729561, 0, 0.48779875, 6.797689, -3.7996702, 3.516557)
 
-[node name="Pushable_template" parent="test" unique_id=493475011 instance=ExtResource("5_wj406")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0406742, 0, 0)
+[node name="pickable_hammer" parent="test" unique_id=2116905250 instance=ExtResource("8_y8po0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5752037, 0, 0)
 
-[node name="Usable_template" parent="test" unique_id=280956979 instance=ExtResource("6_0uk2q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6509957, -2.8177629, 0)
-collectable = false
+[node name="lootables" type="Node3D" parent="test" unique_id=147624527]
 
-[node name="Inspectable_template" parent="test" unique_id=965201474 instance=ExtResource("7_6wxs2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7997597, 0, -1.3742571)
+[node name="lootable_bottle_s" parent="test/lootables" unique_id=904903291 instance=ExtResource("8_48t5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9578109, 0, 0)
+
+[node name="lootable_bottle_l" parent="test/lootables" unique_id=1942336403 instance=ExtResource("8_kwb38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2365046, 0, 0)
+
+[node name="lootable_apple" parent="test/lootables" unique_id=600911202 instance=ExtResource("9_rnrp6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.061964, 0, 0)
+
+[node name="lootable_banana" parent="test/lootables" unique_id=97095485 instance=ExtResource("10_lrs6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.873242, 0, 0)
+
+[node name="lootable_burger" parent="test/lootables" unique_id=417401920 instance=ExtResource("11_swc8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.756657, 0, 0)
 
 [node name="Player" parent="." unique_id=1314404669 instance=ExtResource("2_n4amo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018591404, -0.018591285, 0)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1827724435]
+
+[node name="Inventory_interface" type="Control" parent="UI" unique_id=17693191]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_13g18")
+
+[node name="player_inventory" parent="UI/Inventory_interface" unique_id=229541760 instance=ExtResource("13_lrs6r")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 150.0
+offset_top = 150.0
+offset_right = 224.0
+offset_bottom = 224.0
+
+[node name="external_inventory" parent="UI/Inventory_interface" unique_id=1542613055 instance=ExtResource("13_lrs6r")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 150.0
+offset_right = 1180.0
+offset_bottom = 224.0
+
+[node name="Slot" parent="UI/Inventory_interface" unique_id=1733672502 instance=ExtResource("16_ftsh0")]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="." unique_id=1045485205]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="world_item_dictionary" type="Node" parent="." unique_id=1548445468]
+script = ExtResource("21_b8au4")
+
+[node name="global_vars" type="Node" parent="." unique_id=701068719]
+script = ExtResource("22_nefvi")
+
+[connection signal="toggle_inventory" from="." to="." method="_on_toggle_inventory"]
+[connection signal="drop_slot_data" from="UI/Inventory_interface" to="." method="_on_inventory_interface_drop_slot_data"]
+[connection signal="gui_input" from="UI/Inventory_interface" to="UI/Inventory_interface" method="_on_gui_input"]
+[connection signal="visibility_changed" from="UI/Inventory_interface" to="UI/Inventory_interface" method="_on_visibility_changed"]

@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://ci1dashbde43h"]
 
 [ext_resource type="Script" uid="uid://wheaxqfgljkv" path="res://Scripts/Player scripts/General/player_1.0.gd" id="1_gygbr"]
+[ext_resource type="Resource" uid="uid://c7h115kdcs4fm" path="res://items interactions and inventory/Inventory/test_inv.tres" id="2_mo22s"]
 [ext_resource type="Script" uid="uid://bps0gpyhuce4p" path="res://Scripts/Player scripts/Components/input_handler_controller.gd" id="2_q6prw"]
 [ext_resource type="Material" uid="uid://xnmsobt7wdfc" path="res://Assets/resources/standard_textures/glass.tres" id="2_yv311"]
 [ext_resource type="Script" uid="uid://dgb8x2wxh6q5n" path="res://Scripts/Player scripts/Components/camera_controller_controller.gd" id="3_1vsxk"]
 [ext_resource type="Script" uid="uid://bp7g2p3883m6s" path="res://Scripts/Player scripts/Components/camera_fx_component.gd" id="4_0ut4m"]
 [ext_resource type="Script" uid="uid://1utiv5kjji2g" path="res://Scripts/Player scripts/Components/ground_movement_controller.gd" id="4_b36hs"]
 [ext_resource type="Script" uid="uid://bsov8vnwfyqgq" path="res://Scripts/Player scripts/Components/air_movement_controller.gd" id="6_rv7ya"]
-[ext_resource type="Texture2D" uid="uid://br5womcjb108k" path="res://Assets/kenney_cursor-pack/PNG/Basic/Double/dot_large.png" id="7_1ax6f"]
+[ext_resource type="Texture2D" uid="uid://br5womcjb108k" path="res://Assets/kenny_placeholders/kenney_cursor-pack/PNG/Basic/Double/dot_large.png" id="7_1ax6f"]
 [ext_resource type="Script" uid="uid://deuycoypn76f0" path="res://Scripts/Player scripts/Components/interaction_controller.gd" id="7_pcq0e"]
-[ext_resource type="Texture2D" uid="uid://dbqw1lg7alluj" path="res://Assets/kenney_cursor-pack/PNG/Basic/Double/target_a.png" id="8_pcq0e"]
+[ext_resource type="Texture2D" uid="uid://dbqw1lg7alluj" path="res://Assets/kenny_placeholders/kenney_cursor-pack/PNG/Basic/Double/target_a.png" id="8_pcq0e"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0ut4m"]
 
@@ -20,6 +21,7 @@
 [node name="Player" type="CharacterBody3D" unique_id=1314404669 groups=["player"]]
 collision_mask = 2
 script = ExtResource("1_gygbr")
+inventory_data = ExtResource("2_mo22s")
 
 [node name="Model" type="Node3D" parent="." unique_id=1306374061]
 
