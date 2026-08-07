@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Inspection_Data" format=3 uid="uid://dvden0owanqvt"]
+
+[ext_resource type="Script" uid="uid://dk02xw4v0i4rs" path="res://Objects/scripts/inspection_data.gd" id="1_ogabi"]
+[ext_resource type="Texture2D" uid="uid://bt45nafikbxy0" path="res://Assets/Icons and shit/icon.svg" id="2_48lys"]
+
+[resource]
+script = ExtResource("1_ogabi")
+name = "Godot Cube"
+description = "Youre not supposed to have this item. "
+texture = ExtResource("2_48lys")
+metadata/_custom_type_script = "uid://dk02xw4v0i4rs"

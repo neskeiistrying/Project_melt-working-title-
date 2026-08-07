@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="template project: inventory"
+config/name="project_melt_01"
 run/main_scene="uid://bneqov0rg7tca"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/Icons and shit/icon.svg"

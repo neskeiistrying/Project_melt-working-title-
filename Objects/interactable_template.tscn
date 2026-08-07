@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c4j1do0yr4380"]
+
+[ext_resource type="Script" uid="uid://c5rit03gvqw0r" path="res://Objects/scripts/interactable_template.gd" id="1_iuxvh"]
+[ext_resource type="Texture2D" uid="uid://bt45nafikbxy0" path="res://Assets/Icons and shit/icon.svg" id="2_lps7l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w43aw"]
+albedo_texture = ExtResource("2_lps7l")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lps7l"]
+
+[node name="interactable_template" type="RigidBody3D" unique_id=1715442141]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_iuxvh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=600733048]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material = SubResource("StandardMaterial3D_w43aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1204844488]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_lps7l")
+
+[connection signal="collected" from="." to="." method="_on_collected"]
+[connection signal="dropped" from="." to="." method="_on_dropped"]
+[connection signal="holding" from="." to="." method="_on_holding"]
+[connection signal="inspect" from="." to="." method="_on_inspect"]
+[connection signal="picked_up" from="." to="." method="_on_picked_up"]
+[connection signal="threw" from="." to="." method="_on_threw"]
+[connection signal="used" from="." to="." method="_on_used"]

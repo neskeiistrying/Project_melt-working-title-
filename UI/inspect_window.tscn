@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://b3t72wd0i4jgv"]
+
+[ext_resource type="StyleBox" uid="uid://uxshon3mj4lq" path="res://Assets/resources/stylesnstuff/inspect_panel.tres" id="1_bgrbd"]
+[ext_resource type="Script" uid="uid://buwmfjo10307j" path="res://UI/scripts/inspect_window.gd" id="2_pgwsv"]
+[ext_resource type="StyleBox" uid="uid://mte4pqynwrs" path="res://Assets/resources/stylesnstuff/rounded corners.tres" id="3_0ceib"]
+
+[node name="inspect_window" type="CanvasLayer" unique_id=154783595]
+script = ExtResource("2_pgwsv")
+
+[node name="inspect_window_" type="Panel" parent="." unique_id=2053741194]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 284.0
+offset_top = -311.0
+offset_right = 703.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_bgrbd")
+
+[node name="Control" type="Control" parent="inspect_window_" unique_id=99529688]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel4" type="Panel" parent="inspect_window_/Control" unique_id=1389083147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_0ceib")
+
+[node name="Label" type="Label" parent="inspect_window_/Control/Panel4" unique_id=669402122]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.5
+offset_top = 11.0
+offset_right = 44.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Description"
+
+[node name="Panel5" type="Panel" parent="inspect_window_/Control/Panel4" unique_id=536244328]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_0ceib")
+metadata/_edit_use_anchors_ = true
+
+[node name="description" type="Label" parent="inspect_window_/Control/Panel4/Panel5" unique_id=14470825]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(165, 216)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -108.0
+offset_right = 82.5
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel2" type="Panel" parent="inspect_window_/Control" unique_id=1430762395]
+custom_minimum_size = Vector2(200, 75)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -75.0
+offset_right = 200.0
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("3_0ceib")
+
+[node name="Label" type="Label" parent="inspect_window_/Control/Panel2" unique_id=1521760627]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.5
+offset_top = 11.0
+offset_right = 44.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Name"
+horizontal_alignment = 1
+
+[node name="Panel5" type="Panel" parent="inspect_window_/Control/Panel2" unique_id=1167727044]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_0ceib")
+metadata/_edit_use_anchors_ = true
+
+[node name="object_name" type="Label" parent="inspect_window_/Control/Panel2/Panel5" unique_id=47942688]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel3" type="Panel" parent="inspect_window_/Control" unique_id=975464215]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 170.0
+theme_override_styles/panel = ExtResource("3_0ceib")
+
+[node name="TextureRect" type="TextureRect" parent="inspect_window_/Control/Panel3" unique_id=2069467400]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 4

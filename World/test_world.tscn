@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bneqov0rg7tca"]
+
+[ext_resource type="Script" uid="uid://c8lvipbq2lpdj" path="res://World/Scripts/test_world.gd" id="1_rspi7"]
+[ext_resource type="PackedScene" uid="uid://ci1dashbde43h" path="res://Player/Player scenes/player_1.0.tscn" id="2_ftki0"]
+[ext_resource type="Script" uid="uid://cj5qs4i7apb8i" path="res://World/Scripts/global_vars.gd" id="3_w6qo1"]
+[ext_resource type="PackedScene" uid="uid://c4j1do0yr4380" path="res://Objects/interactable_template.tscn" id="4_ftki0"]
+[ext_resource type="Resource" uid="uid://dvden0owanqvt" path="res://Objects/datas/debug.tres" id="5_kgiip"]
+[ext_resource type="PackedScene" uid="uid://b3t72wd0i4jgv" path="res://UI/inspect_window.tscn" id="5_w6qo1"]
+[ext_resource type="PackedScene" uid="uid://bxulcyq1qp5di" path="res://UI/pause_menu.tscn" id="8_ioycy"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kgiip"]
+load_path = "res://.godot/imported/texture_04.png-a401c7288a09a0345df14376482b4d69.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18ja4"]
+albedo_texture = SubResource("CompressedTexture2D_kgiip")
+uv1_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4amo"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_fqlg8"]
+sky_material = SubResource("ProceduralSkyMaterial_n4amo")
+
+[sub_resource type="Environment" id="Environment_kjenx"]
+background_mode = 2
+sky = SubResource("Sky_fqlg8")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D" unique_id=970536923]
+script = ExtResource("1_rspi7")
+
+[node name="Environment" type="Node3D" parent="." unique_id=1294265902]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Test_ground" type="CSGBox3D" parent="Environment" unique_id=342016094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+use_collision = true
+collision_layer = 2
+size = Vector3(100, 0.5, 100)
+material = SubResource("StandardMaterial3D_18ja4")
+
+[node name="Sky" type="Node3D" parent="Environment" unique_id=296757311]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment/Sky" unique_id=964270813]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment/Sky" unique_id=1550488003]
+environment = SubResource("Environment_kjenx")
+
+[node name="Player" parent="." unique_id=1314404669 instance=ExtResource("2_ftki0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018591404, -0.018591285, 0)
+
+[node name="Label" type="Label" parent="." unique_id=1045485205]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="global_vars" type="Node" parent="." unique_id=701068719]
+script = ExtResource("3_w6qo1")
+
+[node name="test" type="Node3D" parent="." unique_id=794090434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94593287, -8.966186)
+
+[node name="interactable_template" parent="test" unique_id=1715442141 instance=ExtResource("4_ftki0")]
+inspection_data = ExtResource("5_kgiip")
+
+[node name="Control" type="Control" parent="." unique_id=1349571210]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="pause_menu" parent="Control" unique_id=754015037 instance=ExtResource("8_ioycy")]
+
+[node name="inspect_window" parent="Control" unique_id=1317238988 instance=ExtResource("5_w6qo1")]
+
+[connection signal="inspect_this" from="Player" to="Control/inspect_window" method="_on_player_inspect_this"]
