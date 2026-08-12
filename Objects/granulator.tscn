@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://cjvr17l7edpcb"]
+
+[ext_resource type="Script" uid="uid://qax41nplb3qp" path="res://Objects/granulator.gd" id="1_0ihx7"]
+[ext_resource type="Material" uid="uid://cj0bwyqhwajce" path="res://Assets/resources/standard_textures/temp_red.tres" id="2_78iu1"]
+[ext_resource type="PackedScene" uid="uid://bhb1k0lttx5us" path="res://Objects/button.tscn" id="3_78iu1"]
+[ext_resource type="PackedScene" uid="uid://c0axqs53ttam8" path="res://Objects/switch.tscn" id="4_5v0lw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21k27"]
+size = Vector3(2.2320557, 0.6533203, 4.4472656)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ihx7"]
+size = Vector3(1.1894531, 0.49694824, 1.6575928)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78iu1"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.2784314)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ihx7"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v0lw"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 1, 0, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0ihx7"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_78iu1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5v0lw"]
+resource_name = "fx"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/Panel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_chkp7"]
+_data = {
+&"RESET": SubResource("Animation_78iu1"),
+&"fx": SubResource("Animation_5v0lw")
+}
+
+[node name="Machine" type="StaticBody3D" unique_id=984603061]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_0ihx7")
+wait_time = 5.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1598195607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16479492, 0.17044067, 0.007965088)
+size = Vector3(2.2739258, 0.3312378, 4.4349976)
+material = ExtResource("2_78iu1")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1764229529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13775635, 0.32029235, 1.0250778)
+size = Vector3(1.3009033, 0.3312378, 1.7649994)
+material = ExtResource("2_78iu1")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" unique_id=971323462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13775635, 0.32029235, -1.0809889)
+size = Vector3(1.3009033, 0.3312378, 1.7649994)
+material = ExtResource("2_78iu1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1650249472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16339111, 0.32373047, 0.021484375)
+shape = SubResource("BoxShape3D_21k27")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2057188598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6619348, 1.0251203)
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1273783120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31047112, 0.25152588, -0.0017700195)
+shape = SubResource("BoxShape3D_0ihx7")
+
+[node name="Label" type="Label" parent="." unique_id=1174520591]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label2" type="Label" parent="." unique_id=1710287982]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label3" type="Label" parent="." unique_id=1070360135]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=939255943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0862439, -0.92417455)
+
+[node name="Timer" type="Timer" parent="." unique_id=488199755]
+wait_time = 3.0
+one_shot = true
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1855712102]
+transparent_bg = true
+gui_snap_controls_to_pixels = false
+size = Vector2i(550, 300)
+size_2d_override_stretch = true
+
+[node name="Panel" type="Panel" parent="SubViewport" unique_id=335012945]
+custom_minimum_size = Vector2(550, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -150.0
+offset_right = 275.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(275, 150)
+theme_override_styles/panel = SubResource("StyleBoxFlat_78iu1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Panel" unique_id=1243248478]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -119.5
+offset_right = 250.0
+offset_bottom = 119.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport/Panel/VBoxContainer" unique_id=803123249]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "processing"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport/Panel/VBoxContainer" unique_id=1916138014]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 80
+theme_override_styles/background = SubResource("StyleBoxFlat_0ihx7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5v0lw")
+max_value = 3.0
+value = 0.01
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1948956365]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.4055569, 0)
+billboard = 2
+texture = SubResource("ViewportTexture_0ihx7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1940703160]
+libraries/ = SubResource("AnimationLibrary_chkp7")
+autoplay = &"fx"
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=398373179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30255127, 0.81294775, 0.11856866)
+use_collision = true
+size = Vector3(1.301, 0.916, 0.07)
+material = ExtResource("2_78iu1")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1200616770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30255127, 0.81294775, 1.9712199)
+use_collision = true
+size = Vector3(1.301, 0.916, 0.07)
+material = ExtResource("2_78iu1")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=82075073]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.35009265, 0.81294775, 1.0448942)
+use_collision = true
+size = Vector3(1.816, 0.916, 0.07)
+material = ExtResource("2_78iu1")
+
+[node name="auto" parent="." unique_id=1122377842 instance=ExtResource("4_5v0lw")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 1.4656403, -0.008811474, 0)
+
+[node name="process" parent="." unique_id=1024895127 instance=ExtResource("3_78iu1")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 1.4656403, -0.008811474, 0.37283432)
+
+[node name="stop" parent="." unique_id=813779796 instance=ExtResource("3_78iu1")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 1.465762, -0.008406758, -0.373)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="toggled" from="auto" to="." method="_on_switch_toggled"]
+[connection signal="pressed" from="process" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="stop" to="." method="_on_button_2_pressed"]

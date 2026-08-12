@@ -30,6 +30,12 @@ player=""
 hand=""
 target=""
 external_inventories=""
+granulator=""
+main=""
+
+[gui]
+
+common/snap_controls_to_pixels=false
 
 [input]
 
@@ -140,6 +146,7 @@ item_inspect={
 3d_physics/layer_2="Environment"
 3d_physics/layer_3="Objects"
 3d_physics/layer_4="Object_on_hand"
+3d_physics/layer_5="immovable_objects"
 3d_physics/layer_32="null"
 
 [physics]

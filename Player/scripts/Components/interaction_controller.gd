@@ -57,9 +57,9 @@ func collision():
 # idk.. i didnt want all these to be clogging the collision function
 func interaction():
 	if collider:
-		if interaction_enabled:
+		item_inspect()
+		if collider is Interactable:
 			item_collection()
-			item_inspect()
 			item_pickup()
 			item_throw()
 			item_use()
@@ -74,9 +74,7 @@ func item_collection():
 ###################################
 
 func item_inspect():
-	if collider is Interactable:
-		var data: Inspection_Data = collider.inspection_data
-		inspection_data.emit(data)
+	inspection_data.emit(collider)
 
 ###################################
 

@@ -22,7 +22,9 @@ load_path = "res://.godot/imported/dot_large.png-be5063ed2ee3074b38eddf1eee1d0fa
 load_path = "res://.godot/imported/target_a.png-1ecb55bf1039fda27f479f609973234a.ctex"
 
 [node name="Player" type="CharacterBody3D" unique_id=1314404669 groups=["player"]]
-collision_mask = 2
+collision_mask = 18
+wall_min_slide_angle = 0.0
+safe_margin = 0.1
 script = ExtResource("1_gygbr")
 
 [node name="Model" type="Node3D" parent="." unique_id=1306374061]
@@ -66,12 +68,12 @@ surface_material_override/0 = ExtResource("2_yv311")
 
 [node name="target_ray" type="RayCast3D" parent="Camera_components/Interaction_components" unique_id=1718625904]
 unique_name_in_owner = true
-target_position = Vector3(0, 0, -20)
+target_position = Vector3(0, 0, -50)
 collision_mask = 6
 
 [node name="default_mark" type="Marker3D" parent="Camera_components/Interaction_components/target_ray" unique_id=1432030399]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -52)
 
 [node name="mark" type="Marker3D" parent="Camera_components/Interaction_components" unique_id=2085404063 groups=["target"]]
 unique_name_in_owner = true

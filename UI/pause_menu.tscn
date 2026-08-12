@@ -49,10 +49,16 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Resume"
 
+[node name="restart" type="Button" parent="Panel/VBoxContainer" unique_id=105057748]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Restart"
+
 [node name="quit" type="Button" parent="Panel/VBoxContainer" unique_id=835432321]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="Panel/VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/quit" to="." method="_on_quit_pressed"]

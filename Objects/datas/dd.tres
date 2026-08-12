@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Inspection_Data" format=3 uid="uid://dtdn7cslk21kb"]
+
+[ext_resource type="Script" uid="uid://dk02xw4v0i4rs" path="res://Objects/scripts/inspection_data.gd" id="1_81vbi"]
+
+[resource]
+script = ExtResource("1_81vbi")
+metadata/_custom_type_script = "uid://dk02xw4v0i4rs"

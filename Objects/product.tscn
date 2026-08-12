@@ -1,22 +1,27 @@
-[gd_scene format=3 uid="uid://c4j1do0yr4380"]
+[gd_scene format=3 uid="uid://dj2lqy6w2vqdo"]
 
-[ext_resource type="Script" uid="uid://c5rit03gvqw0r" path="res://Objects/scripts/interactable_template.gd" id="1_iuxvh"]
-[ext_resource type="Texture2D" uid="uid://bt45nafikbxy0" path="res://Assets/Icons and shit/icon.svg" id="2_lps7l"]
+[ext_resource type="Script" uid="uid://c5rit03gvqw0r" path="res://Objects/scripts/interactable_template.gd" id="1_wehlq"]
+[ext_resource type="Resource" uid="uid://cbp24388gbxod" path="res://Objects/datas/product.tres" id="2_wehlq"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w43aw"]
-albedo_texture = ExtResource("2_lps7l")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4wt26"]
+load_path = "res://.godot/imported/icon.svg-5cff66758a3a3ef1b38695d413d64a22.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wehlq"]
+albedo_color = Color(1, 0, 1, 1)
+albedo_texture = SubResource("CompressedTexture2D_4wt26")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lps7l"]
-size = Vector3(2.2104492, 1, 1)
 
-[node name="interactable_template" type="RigidBody3D" unique_id=1715442141 groups=["granulator"]]
+[node name="product" type="RigidBody3D" unique_id=1715442141]
 collision_layer = 4
 collision_mask = 15
-script = ExtResource("1_iuxvh")
+script = ExtResource("1_wehlq")
+item_type = 1
+inspection_data = ExtResource("2_wehlq")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=600733048]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-material = SubResource("StandardMaterial3D_w43aw")
+material = SubResource("StandardMaterial3D_wehlq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1204844488]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

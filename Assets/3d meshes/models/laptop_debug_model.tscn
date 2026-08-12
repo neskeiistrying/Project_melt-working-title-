@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://dxosx4obhhawb"]
+
+[ext_resource type="Material" uid="uid://cyvr2bn4nkb24" path="res://Assets/resources/standard_textures/temp_black.tres" id="1_18h5j"]
+[ext_resource type="Material" uid="uid://dijrkappdkkxb" path="res://Assets/resources/standard_textures/debug_screen_glass.tres" id="2_lrgjr"]
+[ext_resource type="Material" uid="uid://b1sy5joqppj5i" path="res://Assets/resources/standard_textures/debug_kb.tres" id="3_ntxl0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18h5j"]
+albedo_color = Color(0.28485042, 0.28485024, 0.2848502, 1)
+metallic = 1.0
+roughness = 0.67
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrgjr"]
+albedo_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+metallic = 1.0
+roughness = 0.67
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ntxl0"]
+albedo_color = Color(0.28485042, 0.28485024, 0.2848502, 1)
+metallic = 1.0
+roughness = 0.67
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6yhj"]
+albedo_color = Color(0.18717611, 0.18717614, 0.18717608, 1)
+metallic = 1.0
+roughness = 0.6
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a863i"]
+albedo_color = Color(0.16206557, 0.1620656, 0.16206554, 1)
+metallic = 1.0
+roughness = 0.71
+uv1_triplanar = true
+
+[node name="laptop_debug_model" type="Node3D" unique_id=883865581]
+
+[node name="laptop_debug_model" type="CSGBox3D" parent="." unique_id=583641214]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.01739049, -0.0064602494)
+size = Vector3(1, 0.655, 0.02)
+material = SubResource("StandardMaterial3D_18h5j")
+
+[node name="base_corner" type="CSGBox3D" parent="laptop_debug_model" unique_id=774596433]
+transform = Transform3D(0.70710677, -0.70710677, 3.090862e-08, 0.70710677, 0.70710677, 1.2802769e-08, -3.090862e-08, 1.2802769e-08, 1, 0.5177104, -0.33178216, 1.8626451e-09)
+operation = 2
+size = Vector3(0.11425781, 0.049667954, 0.12)
+material = SubResource("StandardMaterial3D_18h5j")
+
+[node name="base_corner2" type="CSGBox3D" parent="laptop_debug_model" unique_id=178767360]
+transform = Transform3D(0.7071067, 0.7071067, -3.090862e-08, -0.7071067, 0.7071067, 1.2802769e-08, 3.0908616e-08, 1.2802769e-08, 1, -0.518, -0.33166316, 0.00039050356)
+operation = 2
+size = Vector3(0.11425781, 0.049667954, 0.12)
+material = SubResource("StandardMaterial3D_18h5j")
+
+[node name="hinge" type="CSGCylinder3D" parent="laptop_debug_model" unique_id=1432382534]
+transform = Transform3D(2.8530579e-08, 1, -8.609463e-08, -0.14649738, 8.934543e-08, 0.98921114, 0.98921114, -1.561012e-08, 0.14649738, 0, 0.32901058, -0.0051976033)
+radius = 0.016601563
+height = 1.001
+material = ExtResource("1_18h5j")
+
+[node name="screen_body" type="CSGBox3D" parent="laptop_debug_model/hinge" unique_id=532310785]
+transform = Transform3D(-4.371139e-08, -0.98548704, 0.1697624, 1, -4.3076923e-08, 7.4206046e-09, -3.5527137e-15, 0.1697624, 0.98548704, -0.32230133, -1.3799169e-08, 0.064958714)
+size = Vector3(1, 0.65435606, 0.013)
+material = SubResource("StandardMaterial3D_lrgjr")
+
+[node name="screen" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body" unique_id=2045489351]
+transform = Transform3D(1, 1.9433344e-12, 9.876544e-13, -3.5527137e-14, 1.0000001, -1.7881393e-07, 3.6948222e-13, 1.7881393e-07, 1.0000001, 3.1974423e-14, -2.0861626e-07, -0.008662403)
+operation = 2
+size = Vector3(0.944, 0.595, 0.010175537)
+material = ExtResource("2_lrgjr")
+
+[node name="screen_corner" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body/screen" unique_id=760626776]
+transform = Transform3D(0.7172745, -0.0017561722, 0.6967886, 0.6948557, 0.07624926, -0.7150926, -0.05187379, 0.9970852, 0.055911943, 0.52931994, 0.31160417, 0.029228717)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="screen_corner2" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body/screen" unique_id=1908224993]
+transform = Transform3D(0.7172743, 0.0017563297, -0.69678867, -0.69485575, 0.07624927, -0.7150925, 0.051873684, 0.99708503, 0.055912048, -0.5289999, 0.31115744, 0.029020816)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="screen_corner3" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body/screen" unique_id=1844793310]
+transform = Transform3D(-0.7172745, 0.001756259, -0.6967886, -0.6948561, -0.07624903, 0.71509296, -0.05187352, 0.99708533, 0.05591187, -0.52931994, -0.31896302, 0.03164804)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="screen_corner4" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body/screen" unique_id=1945934440]
+transform = Transform3D(-0.7178681, -0.0012179515, -0.696177, 0.694197, -0.07663995, -0.7156922, -0.05248339, -0.9970562, 0.055862978, 0.529, -0.31896302, 0.03164804)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="screen_on" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body" unique_id=161517047]
+transform = Transform3D(1, 1.9433344e-12, 9.876544e-13, -3.5527137e-14, 1.0000001, -1.7881393e-07, 3.6948222e-13, 1.7881393e-07, 1.0000001, 3.1974423e-14, -2.0861626e-07, -0.008662403)
+operation = 2
+size = Vector3(0.944, 0.595, 0.010175537)
+material = ExtResource("2_lrgjr")
+
+[node name="screen_corner" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body/screen_on" unique_id=1274605662]
+transform = Transform3D(0.7172745, -0.0017561722, 0.6967886, 0.6948557, 0.07624926, -0.7150926, -0.05187379, 0.9970852, 0.055911943, 0.52931994, 0.31160417, 0.029228717)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="screen_corner2" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body/screen_on" unique_id=475112877]
+transform = Transform3D(0.7172743, 0.0017563297, -0.69678867, -0.69485575, 0.07624927, -0.7150925, 0.051873684, 0.99708503, 0.055912048, -0.5289999, 0.31115744, 0.029020816)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="screen_corner3" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body/screen_on" unique_id=1545813050]
+transform = Transform3D(-0.7172745, 0.001756259, -0.6967886, -0.6948561, -0.07624903, 0.71509296, -0.05187352, 0.99708533, 0.05591187, -0.52931994, -0.31896302, 0.03164804)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="screen_corner4" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body/screen_on" unique_id=1212747038]
+transform = Transform3D(-0.7178681, -0.0012179515, -0.696177, 0.694197, -0.07663995, -0.7156922, -0.05248339, -0.9970562, 0.055862978, 0.529, -0.31896302, 0.03164804)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="corner" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body" unique_id=554042178]
+transform = Transform3D(-0.7172745, 0.0017562587, -0.6967886, -0.6948564, -0.07624927, 0.7150931, -0.051873714, 0.9970855, 0.055912077, -0.5293198, -0.41672903, 0.055125505)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="corner2" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body" unique_id=1718289184]
+transform = Transform3D(-0.7172743, -0.0017562431, 0.69678867, 0.69485617, -0.07624927, 0.71509296, 0.051873684, 0.99708533, 0.055911988, 0.529, -0.3695733, 0.039562166)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="corner3" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body" unique_id=1436560514]
+transform = Transform3D(0.7172745, -0.0017561722, 0.6967886, 0.6948558, 0.07624906, -0.7150927, -0.051873654, 0.99708533, 0.05591181, 0.52931994, 0.3764478, -0.0007507205)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="corner4" type="CSGBox3D" parent="laptop_debug_model/hinge/screen_body" unique_id=1203215579]
+transform = Transform3D(0.7172743, 0.0017563297, -0.69678867, -0.69485587, 0.07624909, -0.71509254, 0.05187355, 0.99708515, 0.055911914, -0.5289999, 0.37600112, -0.0009585619)
+operation = 2
+size = Vector3(0.13, 0.203, 0.1)
+material = SubResource("StandardMaterial3D_ntxl0")
+
+[node name="kb_dent" type="CSGBox3D" parent="laptop_debug_model" unique_id=1862970817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.089705065, -0.0089355465)
+operation = 2
+size = Vector3(0.835, 0.34, 0.0071289064)
+material = SubResource("StandardMaterial3D_d6yhj")
+
+[node name="kb_keys" type="CSGBox3D" parent="laptop_debug_model" unique_id=2067642737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.089705065, -0.0089355465)
+size = Vector3(0.815, 0.315, 0.007)
+material = ExtResource("3_ntxl0")
+
+[node name="t_pad" type="CSGBox3D" parent="laptop_debug_model" unique_id=553468471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17831668, -0.011946233)
+operation = 2
+size = Vector3(0.225, 0.135, 0.007)
+material = SubResource("StandardMaterial3D_a863i")

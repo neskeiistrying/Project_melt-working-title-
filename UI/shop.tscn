@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cmvxe47ri8hgm"]
+
+[ext_resource type="Script" uid="uid://kh2r6r56hwbc" path="res://UI/scripts/shop.gd" id="1_pogqh"]
+
+[node name="shop" type="CanvasLayer" unique_id=884857734]
+script = ExtResource("1_pogqh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=121848487]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.65, 0.22750008, 1)
+
+[node name="resume" type="Button" parent="." unique_id=280411122]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = 65.0
+grow_horizontal = 0
+text = "X
+"
+
+[connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]

@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b1sy5joqppj5i"]
+
+[ext_resource type="Texture2D" uid="uid://bol3wn3e21t23" path="res://Assets/Kenny_prototype_textures/Dark/texture_12.png" id="1_1bdug"]
+
+[resource]
+albedo_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
+metallic = 1.0
+roughness = 0.6
+normal_enabled = true
+normal_scale = 4.3
+normal_texture = ExtResource("1_1bdug")
+bent_normal_enabled = true
+heightmap_texture = ExtResource("1_1bdug")
+uv1_scale = Vector3(15.92, 15.92, 15.92)
+uv1_offset = Vector3(-0.544, 0, 0)
+uv1_triplanar = true

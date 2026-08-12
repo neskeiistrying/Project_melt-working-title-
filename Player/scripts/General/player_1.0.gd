@@ -11,6 +11,5 @@ signal inspect_this(data)
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
-
-func _on_interaction_controller_inspection_data(data: Variant) -> void:
+func _on_interaction_controller_inspection_data(data) -> void:
 	inspect_this.emit(data)

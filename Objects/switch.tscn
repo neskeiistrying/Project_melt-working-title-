@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://c0axqs53ttam8"]
+
+[ext_resource type="Script" uid="uid://ce0on5e26ism0" path="res://Objects/scripts/switch.gd" id="1_cvhsv"]
+[ext_resource type="Material" uid="uid://cyvr2bn4nkb24" path="res://Assets/resources/standard_textures/temp_black.tres" id="2_4du7u"]
+[ext_resource type="Material" uid="uid://cj0bwyqhwajce" path="res://Assets/resources/standard_textures/temp_red.tres" id="3_63c0x"]
+[ext_resource type="Texture2D" uid="uid://dbnppxtwj0of" path="res://Assets/Kenny_prototype_textures/Red/texture_09.png" id="4_4du7u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63c0x"]
+albedo_texture = ExtResource("4_4du7u")
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 16.0
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a1w1i"]
+size = Vector3(1, 0.6605835, 1)
+
+[sub_resource type="Animation" id="Animation_cvhsv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_model/CSGBox3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.26799527)]
+}
+
+[sub_resource type="Animation" id="Animation_63c0x"]
+resource_name = "switch_toggle_off"
+length = 0.05
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_model/CSGBox3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.2687807), Vector3(0, 0, -0.26799527)]
+}
+
+[sub_resource type="Animation" id="Animation_4du7u"]
+resource_name = "switch_toggle_on"
+length = 0.05
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button_model/CSGBox3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.049999997),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.26799527), Vector3(0, 0, 0.2687807)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_63c0x"]
+_data = {
+&"RESET": SubResource("Animation_cvhsv"),
+&"switch_toggle_off": SubResource("Animation_63c0x"),
+&"switch_toggle_on": SubResource("Animation_4du7u")
+}
+
+[node name="switch" type="RigidBody3D" unique_id=1024895127]
+collision_layer = 4
+collision_mask = 15
+freeze = true
+script = ExtResource("1_cvhsv")
+
+[node name="button_model" type="CSGBox3D" parent="." unique_id=1186535570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21972656, 0)
+size = Vector3(1, 0.45117188, 1)
+material = ExtResource("2_4du7u")
+
+[node name="button_model2" type="CSGBox3D" parent="button_model" unique_id=218987075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19338495, 0)
+operation = 2
+size = Vector3(0.695, 0.076, 0.395)
+material = ExtResource("2_4du7u")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="button_model" unique_id=2146021373]
+transform = Transform3D(0.9643032, 0.26479867, 0, -0.26479867, 0.9643032, 0, 0, 0, 1, 0.0018310547, 0.21505249, 0)
+size = Vector3(0.657, 0.262, 0.39)
+material = ExtResource("3_63c0x")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="button_model/CSGBox3D" unique_id=451194026]
+transform = Transform3D(0.9636395, -0.26720458, 0, 0.26720458, 0.9636395, 0, 0, 0, 1, 0.14252144, 0.21817088, 0)
+operation = 2
+size = Vector3(0.37195703, 0.262, 0.39)
+material = ExtResource("3_63c0x")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="button_model/CSGBox3D" unique_id=1199353286]
+transform = Transform3D(0.9636301, 0.2672383, 0, -0.2672383, 0.9636301, 0, 0, 0, 1, -0.14583102, 0.21861732, 0)
+operation = 2
+size = Vector3(0.37195703, 0.262, 0.39)
+material = ExtResource("3_63c0x")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="button_model/CSGBox3D" unique_id=126758263]
+transform = Transform3D(0.9999995, 0, 0, 0, 0.9999995, 0, 0, 0, 1, 0.002, 0, 0)
+visible = false
+size = Vector3(0.657, 0.262, 0.39)
+material = SubResource("StandardMaterial3D_63c0x")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="button_model/CSGBox3D/CSGBox3D" unique_id=380766586]
+transform = Transform3D(0.9636395, -0.26720458, 0, 0.26720458, 0.9636395, 0, 0, 0, 1, 0.14252144, 0.21817088, 0)
+operation = 2
+size = Vector3(0.37195703, 0.262, 0.39)
+material = SubResource("StandardMaterial3D_63c0x")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="button_model/CSGBox3D/CSGBox3D" unique_id=2084803661]
+transform = Transform3D(0.9636301, 0.2672383, 0, -0.2672383, 0.9636301, 0, 0, 0, 1, -0.14583102, 0.21861732, 0)
+operation = 2
+size = Vector3(0.37195703, 0.262, 0.39)
+material = SubResource("StandardMaterial3D_63c0x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1326996636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3119812, 0)
+shape = SubResource("BoxShape3D_a1w1i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=436856368]
+libraries/ = SubResource("AnimationLibrary_63c0x")
+
+[connection signal="collected" from="." to="." method="_on_collected"]

@@ -1,7 +1,12 @@
 [gd_resource type="Resource" script_class="Inspection_Data" format=3 uid="uid://cbp24388gbxod"]
 
 [ext_resource type="Script" uid="uid://dk02xw4v0i4rs" path="res://Objects/scripts/inspection_data.gd" id="1_b4jpr"]
+[ext_resource type="Texture2D" uid="uid://bc7f7gwwhim52" path="res://Assets/Kenny_prototype_textures/Purple/texture_13.png" id="2_b4jpr"]
 
 [resource]
 script = ExtResource("1_b4jpr")
+name = "product"
+item_type = 2
+description = "Product after inputting debug item into machine"
+texture = ExtResource("2_b4jpr")
 metadata/_custom_type_script = "uid://dk02xw4v0i4rs"

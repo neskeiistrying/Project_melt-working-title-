@@ -4,9 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://ci1dashbde43h" path="res://Player/Player scenes/player_1.0.tscn" id="2_ftki0"]
 [ext_resource type="Script" uid="uid://cj5qs4i7apb8i" path="res://World/Scripts/global_vars.gd" id="3_w6qo1"]
 [ext_resource type="PackedScene" uid="uid://c4j1do0yr4380" path="res://Objects/interactable_template.tscn" id="4_ftki0"]
-[ext_resource type="Resource" uid="uid://dvden0owanqvt" path="res://Objects/datas/debug.tres" id="5_kgiip"]
 [ext_resource type="PackedScene" uid="uid://b3t72wd0i4jgv" path="res://UI/inspect_window.tscn" id="5_w6qo1"]
+[ext_resource type="Script" uid="uid://dk02xw4v0i4rs" path="res://Objects/scripts/inspection_data.gd" id="6_2xslp"]
+[ext_resource type="PackedScene" uid="uid://bhb1k0lttx5us" path="res://Objects/button.tscn" id="6_523qg"]
+[ext_resource type="PackedScene" uid="uid://c0axqs53ttam8" path="res://Objects/switch.tscn" id="7_523qg"]
+[ext_resource type="PackedScene" uid="uid://cjvr17l7edpcb" path="res://Objects/granulator.tscn" id="8_2xslp"]
+[ext_resource type="PackedScene" uid="uid://bsxu7xegle5mm" path="res://Objects/laptop.tscn" id="8_dghf1"]
 [ext_resource type="PackedScene" uid="uid://bxulcyq1qp5di" path="res://UI/pause_menu.tscn" id="8_ioycy"]
+[ext_resource type="PackedScene" uid="uid://cmvxe47ri8hgm" path="res://UI/shop.tscn" id="11_11lc6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kgiip"]
 load_path = "res://.godot/imported/texture_04.png-a401c7288a09a0345df14376482b4d69.s3tc.ctex"
@@ -28,7 +33,18 @@ sky = SubResource("Sky_fqlg8")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="World" type="Node3D" unique_id=970536923]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2xslp"]
+load_path = "res://.godot/imported/icon.svg-5cff66758a3a3ef1b38695d413d64a22.s3tc.ctex"
+
+[sub_resource type="Resource" id="Resource_523qg"]
+script = ExtResource("6_2xslp")
+name = "Godot Cube"
+description = "Youre not supposed to have this item. "
+texture = SubResource("CompressedTexture2D_2xslp")
+quality = 25
+metadata/_custom_type_script = "uid://dk02xw4v0i4rs"
+
+[node name="World" type="Node3D" unique_id=970536923 groups=["main"]]
 script = ExtResource("1_rspi7")
 
 [node name="Environment" type="Node3D" parent="." unique_id=1294265902]
@@ -51,21 +67,43 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment/Sky" unique_id=1550488003]
 environment = SubResource("Environment_kjenx")
 
-[node name="Player" parent="." unique_id=1314404669 instance=ExtResource("2_ftki0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018591404, -0.018591285, 0)
-
-[node name="Label" type="Label" parent="." unique_id=1045485205]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="global_vars" type="Node" parent="." unique_id=701068719]
 script = ExtResource("3_w6qo1")
 
-[node name="test" type="Node3D" parent="." unique_id=794090434]
+[node name="test" type="Node3D" parent="." unique_id=794090434 groups=["Inspectable_objects"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94593287, -8.966186)
 
-[node name="interactable_template" parent="test" unique_id=1715442141 instance=ExtResource("4_ftki0")]
-inspection_data = ExtResource("5_kgiip")
+[node name="interactable_template" parent="test" unique_id=1715442141 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6284218, 2.0023074, 9.372871)
+continuous_cd = true
+inspection_data = SubResource("Resource_523qg")
+
+[node name="interactable_template2" parent="test" unique_id=1174990490 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6284218, 2.0023074, 9.372871)
+continuous_cd = true
+inspection_data = SubResource("Resource_523qg")
+
+[node name="interactable_template3" parent="test" unique_id=749630811 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6284218, 2.0023074, 9.372871)
+continuous_cd = true
+inspection_data = SubResource("Resource_523qg")
+
+[node name="interactable_template4" parent="test" unique_id=672748864 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6284218, 2.0023074, 9.372871)
+continuous_cd = true
+inspection_data = SubResource("Resource_523qg")
+
+[node name="StaticBody3D" parent="test" unique_id=984603061 instance=ExtResource("8_2xslp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8616602, -0.9569292, 8.2245455)
+
+[node name="Button" parent="test" unique_id=791257895 instance=ExtResource("6_523qg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80474186, 0)
+
+[node name="switch" parent="test" unique_id=1024895127 instance=ExtResource("7_523qg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2882738, 1.4601202)
+
+[node name="laptop" parent="test" unique_id=2043587291 instance=ExtResource("8_dghf1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.471561, 0, 3.204502)
 
 [node name="Control" type="Control" parent="." unique_id=1349571210]
 layout_mode = 3
@@ -77,7 +115,33 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="pause_menu" parent="Control" unique_id=754015037 instance=ExtResource("8_ioycy")]
+layer = 2
 
 [node name="inspect_window" parent="Control" unique_id=1317238988 instance=ExtResource("5_w6qo1")]
 
+[node name="shop" parent="Control" unique_id=884857734 instance=ExtResource("11_11lc6")]
+
+[node name="Player" parent="." unique_id=1314404669 instance=ExtResource("2_ftki0")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=833112536]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=960841972]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1045485205]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=1654514097]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer" unique_id=1797118501]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="open_shop" from="test/laptop" to="." method="_on_laptop_open_shop"]
 [connection signal="inspect_this" from="Player" to="Control/inspect_window" method="_on_player_inspect_this"]

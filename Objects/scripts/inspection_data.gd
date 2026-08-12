@@ -15,3 +15,5 @@ enum Item_Type{
 @export var item_type: Item_Type
 @export_multiline() var description: String = ""
 @export var texture: Texture = null
+
+@export var quality: GlobalVars.Quality_Levels
