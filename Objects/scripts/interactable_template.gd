@@ -1,8 +1,6 @@
 extends Interactable
 class_name Interactable_Object
 
-signal inspecting()
-
 enum Item_Type{
 	debug,
 	lootable,
@@ -74,9 +72,8 @@ func _on_dropped(_body: Variant) -> void:
 
 ###################################
 
-func _on_inspect(_body: Variant) -> void:
-	inspecting.emit()
-
+func _on_inspect(_body) -> void:
+	pass
 
 func _on_used(_body: Variant) -> void:
 	pass # Replace with function body.

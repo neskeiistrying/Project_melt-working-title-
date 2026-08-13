@@ -31,6 +31,8 @@ var interaction_enabled: bool
 ###################################
 
 var collider: Node3D
+var prev_collider
+
 
 var prompt_l1: String
 var prompt_l2: String
@@ -57,7 +59,6 @@ func collision():
 # idk.. i didnt want all these to be clogging the collision function
 func interaction():
 	if collider:
-		item_inspect()
 		if collider is Interactable:
 			item_collection()
 			item_pickup()
@@ -74,7 +75,17 @@ func item_collection():
 ###################################
 
 func item_inspect():
-	inspection_data.emit(collider)
+	var look: bool
+	if prev_collider and prev_collider is Interactable:
+		if prev_collider == collider:
+			look = true
+			prev_collider.item_inspect(look)
+		if prev_collider != collider:
+			look = false
+			prev_collider.item_inspect(look)
+			prev_collider = collider
+	else:
+		prev_collider = collider
 
 ###################################
 
@@ -148,6 +159,7 @@ func targetting():
 func debug():
 	if raycast.is_colliding():
 		label_1.text = str(collider)
+		inspection_data.emit(collider)
 		if collider is Interactable and ! trying_to_hold:
 			label_2.text = str(collider.get_script().get_global_name()) + " ("+ str(collider.get_class()) + ")"
 			label_3.text = str(prompt_l1)
@@ -159,6 +171,7 @@ func debug():
 			label_4.text = ""
 			label_5.text = ""
 	else:
+		inspection_data.emit(null)
 		label_1.text = ""
 		label_2.text = ""
 		label_3.text = ""
@@ -190,6 +203,7 @@ func prompting():
 ###################################
 
 func _process(_delta: float) -> void:
+	item_inspect()
 	targetting()
 	collision()
 	interaction()

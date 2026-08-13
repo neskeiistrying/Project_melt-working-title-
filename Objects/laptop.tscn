@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bsxu7xegle5mm"]
 
 [ext_resource type="Material" uid="uid://cyvr2bn4nkb24" path="res://Assets/resources/standard_textures/temp_black.tres" id="1_1e1ym"]
-[ext_resource type="Script" uid="uid://cmrexmgcpn2dp" path="res://Objects/laptop_body.gd" id="1_jnmie"]
+[ext_resource type="Script" uid="uid://cmrexmgcpn2dp" path="res://Objects/scripts/laptop_body.gd" id="1_jnmie"]
 [ext_resource type="Material" uid="uid://dijrkappdkkxb" path="res://Assets/resources/standard_textures/debug_screen_glass.tres" id="2_1e1ym"]
 [ext_resource type="Material" uid="uid://b1sy5joqppj5i" path="res://Assets/resources/standard_textures/debug_kb.tres" id="3_2d5d2"]
 [ext_resource type="Material" uid="uid://bygk670ho6fg7" path="res://Assets/resources/standard_textures/temp_green.tres" id="4_5g4jk"]

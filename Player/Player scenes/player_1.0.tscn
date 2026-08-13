@@ -24,7 +24,6 @@ load_path = "res://.godot/imported/target_a.png-1ecb55bf1039fda27f479f609973234a
 [node name="Player" type="CharacterBody3D" unique_id=1314404669 groups=["player"]]
 collision_mask = 18
 wall_min_slide_angle = 0.0
-safe_margin = 0.1
 script = ExtResource("1_gygbr")
 
 [node name="Model" type="Node3D" parent="." unique_id=1306374061]

@@ -34,7 +34,7 @@ func _ready() -> void:
 func _on_player_inspect_this(data) -> void:
 	if data:
 		current_node = data
-	if null:
+	if ! data:
 		current_node = null
 
 func match_quality(data):
@@ -47,7 +47,10 @@ func match_quality(data):
 		quality_bar.add_theme_stylebox_override("fill", fill_bar)
 
 func inspection():
-	pass
+	if current_node:
+		object_name.text = str(current_node.name)
+	else:
+		object_name.text = ""
 
 func _process(_delta: float) -> void:
-	object_name.text = str(current_node)
+	inspection()

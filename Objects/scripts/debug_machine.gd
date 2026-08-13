@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends Node3D
 
 @onready var label_2: Label = %Label2
 @onready var label: Label = %Label

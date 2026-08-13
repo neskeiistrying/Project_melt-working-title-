@@ -39,5 +39,5 @@ func item_use(body):
 func item_throw(body):
 	threw.emit(body)
 
-func item_inspect(body):
-	inspect.emit(body)
+func item_inspect(look: bool):
+	inspect.emit(look)
