@@ -8,6 +8,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ihx7"]
 size = Vector3(1.1894531, 1.0540161, 1.6575928)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_0ihx7"]
+viewport_path = NodePath("3D_UI/SubViewport")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78iu1"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -46,15 +49,24 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 corner_detail = 20
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0ihx7"]
-viewport_path = NodePath("3d_hud/SubViewport")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pev7w"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
 
 [sub_resource type="Animation" id="Animation_78iu1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("3d_hud/SubViewport/Panel:scale")
+tracks/0/path = NodePath("3D_UI/SubViewport/Panel:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -71,7 +83,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("3d_hud/SubViewport/Panel:scale")
+tracks/0/path = NodePath("3D_UI/SubViewport/Panel:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -107,39 +119,54 @@ data = PackedVector3Array(-1.137, -0.1656, -2.2175, -1.137, 0.1656, -2.2175, -1.
 
 [node name="Machine" type="Node3D" unique_id=693801438]
 script = ExtResource("1_tkhal")
-item_process_time = 3.0
 
-[node name="input_module" type="Area3D" parent="." unique_id=2057188598]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6619348, 1.0251203)
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="input_module" unique_id=1273783120]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31047112, 0.5300599, -0.0017700195)
-shape = SubResource("BoxShape3D_0ihx7")
-
-[node name="processing_and output" type="Node3D" parent="." unique_id=152352550]
-
-[node name="Marker3D" type="Marker3D" parent="processing_and output" unique_id=939255943]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32113212, 1.0862439, -1.0194932)
-
-[node name="Marker3D2" type="Marker3D" parent="processing_and output" unique_id=1594270491]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.32113212, 0.922217, 0.9497577)
-
-[node name="Timer" type="Timer" parent="processing_and output" unique_id=488199755]
+[node name="p_timer" type="Timer" parent="." unique_id=488199755]
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
 
-[node name="3d_hud" type="Node3D" parent="." unique_id=1448972269]
+[node name="r_timer" type="Timer" parent="." unique_id=629938883]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
 
-[node name="SubViewport" type="SubViewport" parent="3d_hud" unique_id=1855712102]
+[node name="input_area" type="Area3D" parent="." unique_id=2057188598]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6619348, 1.0251203)
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="input_area" unique_id=1273783120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31047112, 0.5300599, -0.0017700195)
+shape = SubResource("BoxShape3D_0ihx7")
+
+[node name="positions" type="Node3D" parent="." unique_id=152352550]
+
+[node name="input" type="Marker3D" parent="positions" unique_id=1594270491]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.32113212, 0.922217, 0.9497577)
+
+[node name="storage" type="Marker3D" parent="positions" unique_id=1192338835]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+
+[node name="output" type="Marker3D" parent="positions" unique_id=939255943]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32113212, 1.0862439, -1.0194932)
+
+[node name="3D_UI" type="Sprite3D" parent="." unique_id=1948956365]
+unique_name_in_owner = true
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.4055569, 0)
+billboard = 2
+texture = SubResource("ViewportTexture_0ihx7")
+
+[node name="SubViewport" type="SubViewport" parent="3D_UI" unique_id=1855712102]
 transparent_bg = true
 gui_snap_controls_to_pixels = false
 size = Vector2i(550, 300)
 size_2d_override_stretch = true
 
-[node name="Panel" type="Panel" parent="3d_hud/SubViewport" unique_id=335012945]
+[node name="Panel" type="Panel" parent="3D_UI/SubViewport" unique_id=335012945]
 custom_minimum_size = Vector2(550, 300)
 anchors_preset = 8
 anchor_left = 0.5
@@ -155,7 +182,7 @@ grow_vertical = 2
 pivot_offset = Vector2(275, 150)
 theme_override_styles/panel = SubResource("StyleBoxFlat_78iu1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="3d_hud/SubViewport/Panel" unique_id=1243248478]
+[node name="VBoxContainer" type="VBoxContainer" parent="3D_UI/SubViewport/Panel" unique_id=1243248478]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -169,13 +196,13 @@ offset_bottom = 119.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="text" type="Label" parent="3d_hud/SubViewport/Panel/VBoxContainer" unique_id=803123249]
+[node name="text" type="Label" parent="3D_UI/SubViewport/Panel/VBoxContainer" unique_id=803123249]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "processing"
 horizontal_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="3d_hud/SubViewport/Panel/VBoxContainer" unique_id=1916138014]
+[node name="ProgressBar" type="ProgressBar" parent="3D_UI/SubViewport/Panel/VBoxContainer" unique_id=1916138014]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 125)
 layout_mode = 2
@@ -187,7 +214,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_5v0lw")
 max_value = 3.0
 show_percentage = false
 
-[node name="disp" type="Label" parent="3d_hud/SubViewport/Panel/VBoxContainer/ProgressBar" unique_id=855515756]
+[node name="disp" type="Label" parent="3D_UI/SubViewport/Panel/VBoxContainer/ProgressBar" unique_id=855515756]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -204,13 +232,13 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite3D" type="Sprite3D" parent="3d_hud" unique_id=1948956365]
+[node name="deb" type="ProgressBar" parent="3D_UI/SubViewport/Panel/VBoxContainer" unique_id=1000323545]
 unique_name_in_owner = true
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.4055569, 0)
-billboard = 2
-texture = SubResource("ViewportTexture_0ihx7")
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_pev7w")
+show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="3d_hud" unique_id=1940703160]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="3D_UI" unique_id=1940703160]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_chkp7")
 autoplay = &"fx"
@@ -277,21 +305,6 @@ material = ExtResource("4_chkp7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28906417, 0.3348673, 0.032226563)
 shape = SubResource("ConcavePolygonShape3D_5v0lw")
 
-[node name="debug" type="CanvasLayer" parent="." unique_id=2090698960]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="debug" unique_id=2139703451]
-offset_right = 40.0
-offset_bottom = 50.0
-
-[node name="Label" type="Label" parent="debug/VBoxContainer" unique_id=1174520591]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="debug/VBoxContainer" unique_id=786182424]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="debug/VBoxContainer" unique_id=1349322996]
-layout_mode = 2
-
 [node name="base_model_debug" type="StaticBody3D" parent="." unique_id=444652523]
 collision_layer = 2
 collision_mask = 15
@@ -304,8 +317,26 @@ mesh = SubResource("ArrayMesh_tkhal")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16479492, 0.17044067, 0.007965088)
 shape = SubResource("ConcavePolygonShape3D_60na0")
 
-[connection signal="body_entered" from="input_module" to="." method="input"]
-[connection signal="body_exited" from="input_module" to="." method="remove_object"]
-[connection signal="timeout" from="processing_and output/Timer" to="." method="_on_processing_finished"]
-[connection signal="pressed" from="control_panel/start" to="." method="start_processing"]
-[connection signal="pressed" from="control_panel/stop" to="." method="_on_stopped"]
+[node name="debug" type="CanvasLayer" parent="." unique_id=2090698960]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="debug" unique_id=2139703451]
+offset_right = 40.0
+offset_bottom = 50.0
+
+[node name="Label" type="Label" parent="debug/VBoxContainer" unique_id=1174520591]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="debug/VBoxContainer" unique_id=786182424]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="debug/VBoxContainer" unique_id=1349322996]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="timeout" from="r_timer" to="." method="r_timer_timeout"]
+[connection signal="body_entered" from="input_area" to="." method="on_item_placed"]
+[connection signal="body_exited" from="input_area" to="." method="on_item_removed"]
+[connection signal="pressed" from="control_panel/start" to="." method="start_button_pressed"]
+[connection signal="pressed" from="control_panel/stop" to="." method="stop_button_pressed"]
