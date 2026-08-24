@@ -5,8 +5,7 @@
 [ext_resource type="Material" uid="uid://xnmsobt7wdfc" path="res://Assets/resources/standard_textures/glass.tres" id="2_yv311"]
 [ext_resource type="Script" uid="uid://dgb8x2wxh6q5n" path="res://Player/scripts/Components/camera_controller_controller.gd" id="3_1vsxk"]
 [ext_resource type="Script" uid="uid://bp7g2p3883m6s" path="res://Player/scripts/Components/camera_fx_component.gd" id="4_0ut4m"]
-[ext_resource type="Script" uid="uid://1utiv5kjji2g" path="res://Player/scripts/Components/ground_movement_controller.gd" id="4_b36hs"]
-[ext_resource type="Script" uid="uid://bsov8vnwfyqgq" path="res://Player/scripts/Components/air_movement_controller.gd" id="6_rv7ya"]
+[ext_resource type="Script" uid="uid://1utiv5kjji2g" path="res://Player/scripts/Components/base_movement_controller.gd" id="4_b36hs"]
 [ext_resource type="Script" uid="uid://deuycoypn76f0" path="res://Player/scripts/Components/interaction_controller.gd" id="7_pcq0e"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0ut4m"]
@@ -92,16 +91,11 @@ metadata/_custom_type_script = "uid://bps0gpyhuce4p"
 
 [node name="base_movement_handling" type="Node" parent="Components" unique_id=753723801]
 
-[node name="Ground_Movement_Controller" type="Node" parent="Components/base_movement_handling" unique_id=1689765868 node_paths=PackedStringArray("player", "input_handler")]
+[node name="Base_Movement_Controller" type="Node" parent="Components/base_movement_handling" unique_id=1689765868 node_paths=PackedStringArray("player", "input_handler")]
 script = ExtResource("4_b36hs")
 player = NodePath("../../..")
 input_handler = NodePath("../../Input_Handler")
 metadata/_custom_type_script = "uid://1utiv5kjji2g"
-
-[node name="Air_Movement_Controller" type="Node" parent="Components/base_movement_handling" unique_id=197701681 node_paths=PackedStringArray("player")]
-script = ExtResource("6_rv7ya")
-player = NodePath("../../..")
-metadata/_custom_type_script = "uid://bsov8vnwfyqgq"
 
 [node name="camera_handling" type="Node" parent="Components" unique_id=533666725]
 
@@ -204,6 +198,14 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Label7" type="Label" parent="debug_hud/debug_labels" unique_id=1227293712]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="debug_hud/debug_labels" unique_id=986118172]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label9" type="Label" parent="debug_hud/debug_labels" unique_id=530841139]
 unique_name_in_owner = true
 layout_mode = 2
 

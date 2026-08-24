@@ -42,6 +42,32 @@ texture = SubResource("CompressedTexture2D_2xslp")
 quality = 25
 metadata/_custom_type_script = "uid://dk02xw4v0i4rs"
 
+[sub_resource type="Resource" id="Resource_dghf1"]
+script = ExtResource("6_2xslp")
+name = "Godot Cube"
+description = "Youre not supposed to have this item. "
+texture = SubResource("CompressedTexture2D_2xslp")
+processing_time = 3.0
+quality = 25
+metadata/_custom_type_script = "uid://dk02xw4v0i4rs"
+
+[sub_resource type="Resource" id="Resource_11lc6"]
+script = ExtResource("6_2xslp")
+name = "Godot Cube"
+description = "Youre not supposed to have this item. "
+texture = SubResource("CompressedTexture2D_2xslp")
+processing_time = 5.0
+quality = 25
+metadata/_custom_type_script = "uid://dk02xw4v0i4rs"
+
+[sub_resource type="Resource" id="Resource_8ojdi"]
+script = ExtResource("6_2xslp")
+name = "Godot Cube"
+description = "Youre not supposed to have this item. "
+texture = SubResource("CompressedTexture2D_2xslp")
+quality = 25
+metadata/_custom_type_script = "uid://dk02xw4v0i4rs"
+
 [sub_resource type="GDScript" id="GDScript_523qg"]
 
 [node name="World" type="Node3D" unique_id=970536923 groups=["main"]]
@@ -74,26 +100,27 @@ script = ExtResource("3_w6qo1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94593287, -8.966186)
 
 [node name="items" type="Node3D" parent="test" unique_id=508706393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.334382, 0, 0)
 
 [node name="interactable_template" parent="test/items" unique_id=1715442141 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6284218, 2.0023074, 9.372871)
 continuous_cd = true
 inspection_data = SubResource("Resource_523qg")
 
-[node name="interactable_template2" parent="test/items" unique_id=1174990490 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
+[node name="interactable_template2" parent="test/items" unique_id=1850056688 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6284218, 2.0023074, 9.372871)
 continuous_cd = true
-inspection_data = SubResource("Resource_523qg")
+inspection_data = SubResource("Resource_dghf1")
 
-[node name="interactable_template3" parent="test/items" unique_id=749630811 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
+[node name="interactable_template3" parent="test/items" unique_id=621058031 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6284218, 2.0023074, 9.372871)
 continuous_cd = true
-inspection_data = SubResource("Resource_523qg")
+inspection_data = SubResource("Resource_11lc6")
 
-[node name="interactable_template4" parent="test/items" unique_id=672748864 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
+[node name="interactable_template4" parent="test/items" unique_id=1927548589 groups=["Inspectable_objects"] instance=ExtResource("4_ftki0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6284218, 2.0023074, 9.372871)
 continuous_cd = true
-inspection_data = SubResource("Resource_523qg")
+inspection_data = SubResource("Resource_8ojdi")
 
 [node name="machine" parent="test" unique_id=984603061 instance=ExtResource("8_2xslp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8616602, -0.9569292, 8.2245455)

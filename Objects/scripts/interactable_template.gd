@@ -17,6 +17,8 @@ enum Item_Type{
 var was_thrown: bool = false
 var target_dis: Vector3
 
+var being_held: bool = false
+
 ###################################
 
 func _on_collected(_body: Variant) -> void:
@@ -29,18 +31,23 @@ func _on_collected(_body: Variant) -> void:
 func _on_picked_up(_body: Variant) -> void:
 	if item_type < Item_Type.pushable:
 		was_thrown = false
+		being_held = true
 		target_dis = Vector3.ZERO
-		var hand: Marker3D = get_tree().get_first_node_in_group("hand")
-		var target_pos: Vector3 = hand.global_transform.origin
-		var object_pos: Vector3 = global_transform.origin
-		var object_dis: Vector3 = target_pos - object_pos
-		linear_velocity = object_dis/mass * GlobalVars.player_strength
 		_hold()
 
 		if ! Input.is_action_pressed("item_pickup"):
 			was_thrown = false
+			being_held = false
 			target_dis = Vector3.ZERO
 			_dropped()
+
+func _physics_process(delta: float) -> void:
+	if being_held:
+		var hand: Marker3D = get_tree().get_first_node_in_group("hand")
+		var target_pos: Vector3 = hand.global_transform.origin
+		global_position = global_position.lerp(target_pos, 10 * delta)
+	elif ! being_held:
+		return
 
 func _on_holding(_body: Variant) -> void:
 	_hold()
@@ -49,23 +56,25 @@ func _hold():
 # doesnt interact with player body, when holding
 	set_collision_layer_value(3, false)
 	set_collision_layer_value(4, true)
+	gravity_scale = 0.0
 
 ###################################
 
 func _on_threw(_body: Variant) -> void:
+	was_thrown = true
+	being_held = false
 	var target: Marker3D = get_tree().get_first_node_in_group("target")
 	var target_pos: Vector3 = target.global_transform.origin
 	var object_pos: Vector3 = global_transform.origin
 	target_dis = target_pos - object_pos
-	was_thrown = true
 	linear_velocity = target_dis.normalized() * (GlobalVars.player_throw_force / mass)
 	_dropped()
 
 func _dropped():
 # resets collision layer
-	
 	set_collision_layer_value(3, true)
 	set_collision_layer_value(4, false)
+	gravity_scale = 1.0
 
 func _on_dropped(_body: Variant) -> void:
 	_dropped()

@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://ctcjig38pumor"]
+
+[ext_resource type="Script" uid="uid://ds8mrftm3vwc8" path="res://Objects/scripts/mode_switch.gd" id="1_xk24r"]
+[ext_resource type="Material" uid="uid://cyvr2bn4nkb24" path="res://Assets/resources/standard_textures/temp_black.tres" id="1_xw2eq"]
+[ext_resource type="Material" uid="uid://cj0bwyqhwajce" path="res://Assets/resources/standard_textures/temp_red.tres" id="2_xk24r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xw2eq"]
+size = Vector3(1.0033569, 0.507, 0.64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xk24r"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.06344408, 0.2302251, 0.8332444, 0.27450982)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+
+[sub_resource type="Animation" id="Animation_xk24r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D/CSGCylinder3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.3089969, 1.5707964, 1.5707964)]
+}
+
+[sub_resource type="Animation" id="Animation_p5pei"]
+resource_name = "full_off"
+length = 0.125
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D/CSGCylinder3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.34906584, 1.5707964, 1.5707964), Vector3(-0.34906584, 1.5707964, 1.5707964)]
+}
+
+[sub_resource type="Animation" id="Animation_mm4ge"]
+resource_name = "off_safe"
+length = 0.25
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D/CSGCylinder3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.34906584, 1.5707964, 1.5707964), Vector3(0, 1.5707964, 1.5707964)]
+}
+
+[sub_resource type="Animation" id="Animation_eg8q6"]
+resource_name = "safe_full"
+length = 0.25
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D/CSGCylinder3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 1.5707964), Vector3(0.34906584, 1.5707964, 1.5707964)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eg8q6"]
+_data = {
+&"RESET": SubResource("Animation_xk24r"),
+&"full_off": SubResource("Animation_p5pei"),
+&"off_safe": SubResource("Animation_mm4ge"),
+&"safe_full": SubResource("Animation_eg8q6")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xk24r"]
+viewport_path = NodePath("SubViewport")
+
+[node name="mode_switch" type="RigidBody3D" unique_id=34319708]
+collision_layer = 4
+collision_mask = 15
+freeze = true
+script = ExtResource("1_xk24r")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1515295953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0016784668, 0.15838623, 0)
+size = Vector3(1, 0.327, 0.63)
+material = ExtResource("1_xw2eq")
+
+[node name="CSGCylinder3D" type="CSGBox3D" parent="CSGBox3D" unique_id=792416711]
+transform = Transform3D(0.729274, 1.1245189e-09, 0.1954084, 0.1954084, -8.541573e-09, -0.729274, 1.1245189e-09, 0.755, -8.541573e-09, 0.0039237365, 0.14856297, -1.7151214e-10)
+size = Vector3(0.272, 0.318, 0.64)
+material = ExtResource("2_xk24r")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D/CSGCylinder3D" unique_id=1545015236]
+transform = Transform3D(0.49999982, 5.971085e-08, 0.866025, -1.599944e-08, 1, -5.9710835e-08, -0.866025, 1.5999479e-08, 0.49999982, 0.7509037, -3.2823017e-08, 0)
+operation = 2
+radius = 0.66
+height = 0.425
+sides = 25
+material = ExtResource("2_xk24r")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D/CSGCylinder3D" unique_id=1047471944]
+transform = Transform3D(0.94936955, 1.5941481e-08, 0.31408447, -1.1516036e-08, 1, -1.5942096e-08, -0.31408447, 1.1517265e-08, 0.94936955, -0.043747157, 1.39429694e-08, 0.25759795)
+size = Vector3(0.30117968, 0.318, 0.2313086)
+material = ExtResource("2_xk24r")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D/CSGCylinder3D" unique_id=1630324341]
+transform = Transform3D(0.9494024, 0, -0.31398493, 2.1316282e-14, 1, -2.1316282e-14, 0.31398493, 0, 0.9494024, -0.051883996, -1.2434498e-14, -0.23088703)
+size = Vector3(0.3006914, 0.318, 0.2863623)
+material = ExtResource("2_xk24r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2034553727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0016784668, 0.24658203, 0)
+shape = SubResource("BoxShape3D_xw2eq")
+
+[node name="Label" type="Label" parent="." unique_id=890726397]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1542781209]
+transparent_bg = true
+size = Vector2i(300, 115)
+
+[node name="Label2" type="Label" parent="SubViewport" unique_id=1740379930]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -57.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_xk24r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2080274850]
+libraries/ = SubResource("AnimationLibrary_eg8q6")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1131994139]
+transform = Transform3D(-5.2721777e-10, -0.18793853, 0.068404034, -2.9900373e-09, 0.068404034, 0.18793853, -0.2, -5.2723054e-10, -2.9900353e-09, 0.03704291, 0.6333785, -1.5458248e-09)
+billboard = 1
+texture = SubResource("ViewportTexture_xk24r")
+
+[connection signal="collected" from="." to="." method="_on_collected"]
+[connection signal="inspect" from="." to="." method="_on_inspect"]

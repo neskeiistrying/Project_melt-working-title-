@@ -9,7 +9,7 @@ signal holding(body)
 signal dropped(body)
 signal used(body)
 signal threw(body)
-signal inspect(body)
+signal inspect(look)
 
 ###################################
 

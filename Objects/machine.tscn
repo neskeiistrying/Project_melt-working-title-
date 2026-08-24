@@ -3,11 +3,10 @@
 [ext_resource type="Script" uid="uid://qax41nplb3qp" path="res://Objects/scripts/machine_prototype.gd" id="1_tkhal"]
 [ext_resource type="Material" uid="uid://cj0bwyqhwajce" path="res://Assets/resources/standard_textures/temp_red.tres" id="2_78iu1"]
 [ext_resource type="PackedScene" uid="uid://bhb1k0lttx5us" path="res://Objects/button.tscn" id="3_78iu1"]
-[ext_resource type="PackedScene" uid="uid://c0axqs53ttam8" path="res://Objects/switch.tscn" id="4_5v0lw"]
 [ext_resource type="Material" uid="uid://bygk670ho6fg7" path="res://Assets/resources/standard_textures/temp_green.tres" id="4_chkp7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ihx7"]
-size = Vector3(1.1894531, 0.49694824, 1.6575928)
+size = Vector3(1.1894531, 1.0540161, 1.6575928)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78iu1"]
 content_margin_left = 0.0
@@ -108,7 +107,7 @@ data = PackedVector3Array(-1.137, -0.1656, -2.2175, -1.137, 0.1656, -2.2175, -1.
 
 [node name="Machine" type="Node3D" unique_id=693801438]
 script = ExtResource("1_tkhal")
-item_process_time = 0.5
+item_process_time = 3.0
 
 [node name="input_module" type="Area3D" parent="." unique_id=2057188598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6619348, 1.0251203)
@@ -116,13 +115,16 @@ collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="input_module" unique_id=1273783120]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31047112, 0.25152588, -0.0017700195)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31047112, 0.5300599, -0.0017700195)
 shape = SubResource("BoxShape3D_0ihx7")
 
 [node name="processing_and output" type="Node3D" parent="." unique_id=152352550]
 
 [node name="Marker3D" type="Marker3D" parent="processing_and output" unique_id=939255943]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32113212, 1.0862439, -1.0194932)
+
+[node name="Marker3D2" type="Marker3D" parent="processing_and output" unique_id=1594270491]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.32113212, 0.922217, 0.9497577)
 
 [node name="Timer" type="Timer" parent="processing_and output" unique_id=488199755]
 unique_name_in_owner = true
@@ -167,7 +169,7 @@ offset_bottom = 119.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="3d_hud/SubViewport/Panel/VBoxContainer" unique_id=803123249]
+[node name="text" type="Label" parent="3d_hud/SubViewport/Panel/VBoxContainer" unique_id=803123249]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "processing"
@@ -183,7 +185,24 @@ theme_override_font_sizes/font_size = 80
 theme_override_styles/background = SubResource("StyleBoxFlat_0ihx7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5v0lw")
 max_value = 3.0
-value = 0.01
+show_percentage = false
+
+[node name="disp" type="Label" parent="3d_hud/SubViewport/Panel/VBoxContainer/ProgressBar" unique_id=855515756]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -55.0
+offset_right = 20.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprite3D" type="Sprite3D" parent="3d_hud" unique_id=1948956365]
 unique_name_in_owner = true
@@ -199,14 +218,13 @@ autoplay = &"fx"
 [node name="control_panel" type="Node3D" parent="." unique_id=1965955814]
 transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, 1.134622, 0.34592462, 0)
 
-[node name="auto" parent="control_panel" unique_id=1122377842 instance=ExtResource("4_5v0lw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.008811474, 0)
-
 [node name="start" parent="control_panel" unique_id=1024895127 instance=ExtResource("3_78iu1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.008811474, 1.3728343)
+button_name = "start"
 
 [node name="stop" parent="control_panel" unique_id=813779796 instance=ExtResource("3_78iu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.008406758, -1.373)
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0.008406758, -1.3730005)
+button_name = "stop"
 
 [node name="upgrade_models_debug" type="Node3D" parent="." unique_id=1068564932]
 
@@ -261,11 +279,17 @@ shape = SubResource("ConcavePolygonShape3D_5v0lw")
 
 [node name="debug" type="CanvasLayer" parent="." unique_id=2090698960]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="debug" unique_id=125731481]
+[node name="VBoxContainer" type="VBoxContainer" parent="debug" unique_id=2139703451]
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 50.0
 
 [node name="Label" type="Label" parent="debug/VBoxContainer" unique_id=1174520591]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="debug/VBoxContainer" unique_id=786182424]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="debug/VBoxContainer" unique_id=1349322996]
 layout_mode = 2
 
 [node name="base_model_debug" type="StaticBody3D" parent="." unique_id=444652523]
@@ -283,5 +307,5 @@ shape = SubResource("ConcavePolygonShape3D_60na0")
 [connection signal="body_entered" from="input_module" to="." method="input"]
 [connection signal="body_exited" from="input_module" to="." method="remove_object"]
 [connection signal="timeout" from="processing_and output/Timer" to="." method="_on_processing_finished"]
-[connection signal="toggled" from="control_panel/auto" to="." method="_on_auto_mode_changed"]
 [connection signal="pressed" from="control_panel/start" to="." method="start_processing"]
+[connection signal="pressed" from="control_panel/stop" to="." method="_on_stopped"]

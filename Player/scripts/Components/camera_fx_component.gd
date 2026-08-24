@@ -52,5 +52,5 @@ func _physics_process(delta: float) -> void:
 # handle headbob
 	if player.is_on_floor():
 		if Globaldirection:
-			t_bob += delta * player.velocity.length()/1.5
+			t_bob += delta * player.velocity.length()/1
 			camera.transform.origin = _headbob(t_bob)

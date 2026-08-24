@@ -153,7 +153,8 @@ item_inspect={
 [physics]
 
 common/physics_ticks_per_second=100
-common/physics_jitter_fix=2.0
+common/max_physics_steps_per_frame=10
+common/physics_jitter_fix=0.0
 3d/physics_engine="Jolt Physics"
 common/physics_interpolation=true
 

@@ -5,13 +5,7 @@ signal inspection_data(data)
 
 ###################################
 
-@onready var label_1: Label = %Label1
-@onready var label_2: Label = %Label2
-@onready var label_3: Label = %Label3
-@onready var label_4: Label = %Label4
-@onready var label_5: Label = %Label5
-@onready var label_6: Label = %Label6
-@onready var label_7: Label = %Label7
+
 
 ###################################
 
@@ -157,6 +151,12 @@ func targetting():
 ###################################
 
 func debug():
+	var label_1: Label = %Label1
+	var label_2: Label = %Label2
+	var label_3: Label = %Label3
+	var label_4: Label = %Label4
+	var label_5: Label = %Label5
+
 	if raycast.is_colliding():
 		label_1.text = str(collider)
 		inspection_data.emit(collider)
@@ -181,6 +181,9 @@ func debug():
 ###################################
 
 func _unhandled_input(event: InputEvent) -> void:
+	var label_6: Label = %Label6
+	var label_7: Label = %Label7
+
 	if event:
 		if event is InputEventMouse:
 			label_6.text = str(event.as_text())
